@@ -25,7 +25,7 @@ function rewrite_jetpack_setup() {
 	add_theme_support( 'jetpack-responsive-videos' );
 
 	// Add theme support for Social Menus
-	add_theme_support( 'jetpack-social-menu' );
+	/*add_theme_support( 'jetpack-social-menu' );*/
 
 }
 add_action( 'after_setup_theme', 'rewrite_jetpack_setup' );

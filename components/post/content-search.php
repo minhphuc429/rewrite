@@ -9,16 +9,14 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-			<?php get_template_part( 'components/post/content', 'meta' ); ?>
-		<?php endif; ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
+	<header class="post-header">
+		<?php the_title( sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 	</header>
-	<div class="entry-summary">
+	<section class="post-excerpt">
 		<?php the_excerpt(); ?>
-	</div>
-	<?php get_template_part( 'components/post/content', 'footer' ); ?>
+	</section>
+	<footer class="post-meta">
+	<?php get_template_part( 'components/post/content', 'meta' ); ?>
+	</footer>
 </article>

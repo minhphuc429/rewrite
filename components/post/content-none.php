@@ -9,11 +9,11 @@
 
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'rewrite' ); ?></h1>
+<article class="post">
+	<header class="post-header">
+		<h1 class="post-title"><?php esc_html_e( 'Nothing Found', 'rewrite' ); ?></h1>
 	</header>
-	<div class="page-content">
+	<section class="post-excerpt">
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
@@ -32,5 +32,5 @@
 				get_search_form();
 
 		endif; ?>
-	</div>
+	</section>
 </section><!-- .no-results -->

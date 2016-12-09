@@ -9,31 +9,13 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if ( '' != get_the_post_thumbnail() ) : ?>
-		<div class="post-thumbnail">
-			<a href="<?php the_permalink(); ?>">
-				<?php the_post_thumbnail( 'rewrite-featured-image' ); ?>
-			</a>
-		</div>
-	<?php endif; ?>
-
-	<header class="entry-header">
-		<?php
-			if ( is_single() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			}
-
-		if ( 'post' === get_post_type() ) : ?>
-		<?php get_template_part( 'components/post/content', 'meta' ); ?>
-		<?php
-		endif; ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
+	<header class="post-header">
+	<?php the_title( '<h2 class="post-title"><a href="' . esc_url( get_permalink() ) . '" data-wpel-link="internal">', '</a></h2>' ); ?>
 	</header>
-	<div class="entry-content">
+	<section class="post-excerpt">
 		<?php
-			the_content( sprintf(
+			the_excerpt( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'rewrite' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
@@ -44,6 +26,8 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</div>
-	<?php get_template_part( 'components/post/content', 'footer' ); ?>
+	</section>
+	<footer class="post-meta">
+	<?php get_template_part( 'components/post/content', 'meta' ); ?>
+	</footer>
 </article><!-- #post-## -->

@@ -1,3 +1,5 @@
-		<div class="entry-meta">
-			<?php rewrite_posted_on(); ?>
-		</div><!-- .entry-meta -->
+<?php
+rewrite_posted_by();
+rewrite_posted_in();
+rewrite_posted_on();
+?>

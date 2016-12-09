@@ -10,9 +10,8 @@
  */
 
 ?>
-
-	</div>
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<!-- </div> -->
+	<footer class="site-footer clearfix">
 		<?php get_template_part( 'components/footer/site', 'info' ); ?>
 	</footer>
 </div>

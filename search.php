@@ -9,16 +9,22 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<main id="content" class="content" role="main">
 
 		<?php
 		if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'rewrite' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header>
+			
+			<article class="post">
+				<header class="post-header">
+					<h1 class="post-title"><?php printf( esc_html__( 'Search Results for: %s', 'rewrite' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				</header>
+			</article>
 			<?php
+
+			echo '<div class="extra-pagination inner">';
+		    rewrite_paging_nav();
+			echo '</div>';
+
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
@@ -27,11 +33,11 @@ get_header(); ?>
 				 * If you want to overload this in a child theme then include a file
 				 * called content-search.php and that will be used instead.
 				 */
-				get_template_part( 'components/post/content', 'search' );
+				get_template_part( 'components/post/content', 'search', get_post_format() );
 
 			endwhile;
 
-			the_posts_navigation();
+			rewrite_paging_nav();
 
 		else :
 
@@ -39,7 +45,6 @@ get_header(); ?>
 
 		endif; ?>
 
-		</main>
-	</section>
+	</main>
 <?php
 get_footer();

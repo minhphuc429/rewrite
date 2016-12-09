@@ -1,0 +1,142 @@
+/*
+Theme Name: Rewrite
+Theme URI: http://components.underscores.me/
+Author: Phuc Nguyen Minh
+Author URI: http://nguyenminhphuc.com/
+Description: Inspired by default theme for Ghost blogging platform. With a single-column layout, a large featured image, and a slide-out panel for widgets and navigation, Rewrite is suitable for personal blogging theme.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: rewrite
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+components is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+--------------------------------------------------------------*/
+@import "variables/variables-base";
+@import "mixins/mixins-base";
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "shared/normalize";
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+@import "shared/accessibility";
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+@import "shared/alignments";
+
+/*--------------------------------------------------------------
+# Layout - Post
+--------------------------------------------------------------*/
+@import "layout/posts";
+
+/*--------------------------------------------------------------
+# Icons
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Noto+Sans|Noto+Serif|Inconsolata');
+@import "shared/icons";
+
+/*--------------------------------------------------------------
+# General - Setting up some base styles
+--------------------------------------------------------------*/
+@import "shared/general";
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+@import "shared/utilities";
+
+/*--------------------------------------------------------------
+# General - The main styles for the the theme
+--------------------------------------------------------------*/
+@import "shared/main";
+
+/*--------------------------------------------------------------
+# Single Post - When you click on an individual post
+--------------------------------------------------------------*/
+@import "shared/post";
+
+/*--------------------------------------------------------------
+# Author Profile
+--------------------------------------------------------------*/
+@import "shared/author";
+
+/*--------------------------------------------------------------
+# Comments
+--------------------------------------------------------------*/
+@import "shared/comments";
+
+/*--------------------------------------------------------------
+# Read More - Next/Prev Post Links
+--------------------------------------------------------------*/
+@import "shared/readmore";
+
+/*--------------------------------------------------------------
+# Third Party Elements - Embeds from other services
+--------------------------------------------------------------*/
+@import "shared/3rd";
+
+/*--------------------------------------------------------------
+# Pagination - Tools to let you flick between pages
+--------------------------------------------------------------*/
+@import "shared/pagination";
+
+/*--------------------------------------------------------------
+# Subscribe - Generate those email subscribers
+--------------------------------------------------------------*/
+@import "shared/subscribe";
+
+/*--------------------------------------------------------------
+# Footer - The bottom of every page
+--------------------------------------------------------------*/
+@import "shared/footer";
+
+/*--------------------------------------------------------------
+# Media Queries - Smaller than 900px
+--------------------------------------------------------------*/
+@import "shared/900";
+
+/*--------------------------------------------------------------
+# Media Queries - Smaller than 500px
+--------------------------------------------------------------*/
+@import "shared/500";
+
+/*--------------------------------------------------------------
+# Animations
+--------------------------------------------------------------*/
+@import "shared/animations";

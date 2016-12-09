@@ -63,7 +63,7 @@ function rewrite_header_style() {
 		else :
 	?>
 		.site-title a,
-		.site-description {
+		.site-description{
 			color: #<?php echo esc_attr( $header_text_color ); ?>;
 		}
 	<?php endif; ?>

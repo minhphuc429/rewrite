@@ -8,7 +8,6 @@
  *
  * @package Rewrite
  */
-
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -19,18 +18,12 @@
 
 <?php wp_head(); ?>
 </head>
+<body <?php body_class('nav-closed'); ?>>
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'rewrite' ); ?></a>
-
-	<header id="masthead" class="site-header" role="banner">
-
-		<?php get_template_part( 'components/header/sliding', 'panel' ); ?>
-
+<?php get_template_part( 'components/header/sliding', 'panel' ); ?>
+<div class="site-wrapper">
+	<?php if ( is_home() ) : ?>
 		<?php get_template_part( 'components/header/header', 'fullscreen-image' ); ?>
-
-		<?php rewrite_the_custom_logo(); ?>
-
-	</header>
-	<div id="content" class="site-content">
+	<?php else : ?>
+		<?php get_template_part( 'components/header/header', 'image' ); ?>
+	<?php endif; ?>

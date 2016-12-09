@@ -9,19 +9,29 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<main id="content" class="content" role="main">
 
 		<?php
 		if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header>
+			<article class="post">
+				<header class="post-header">
+					<?php
+						the_archive_title( '<h2 class="post-title">', '</h2>' );
+					?>
+				</header>
+				<section class="post-excerpt">
+					<?php
+						the_archive_description();
+					?>
+				</section>
+			</article>
 			<?php
+
+			echo '<div class="extra-pagination inner">';
+		    rewrite_paging_nav();
+			echo '</div>';
+
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
@@ -34,7 +44,7 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			rewrite_paging_nav();
 
 		else :
 

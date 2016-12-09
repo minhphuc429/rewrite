@@ -47,15 +47,15 @@ function rewrite_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Top', 'rewrite' ),
+		'top-menu' => esc_html__( 'Top Menu', 'rewrite' ),
 	) );
 
 	/**
 	 * Add support for core custom logo.
 	 */
 	add_theme_support( 'custom-logo', array(
-		'height'      => 200,
-		'width'       => 200,
+		'height'      => 250,
+		'width'       => 250,
 		'flex-width'  => true,
 		'flex-height' => true,
 	) );
@@ -89,6 +89,8 @@ function rewrite_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	add_editor_style( array( 'assets/css/editor-style.css', rewrite_fonts_url() ) );
 }
 endif;
 add_action( 'after_setup_theme', 'rewrite_setup' );
@@ -137,11 +139,42 @@ function rewrite_widgets_init() {
 add_action( 'widgets_init', 'rewrite_widgets_init' );
 
 /**
+ * Register custom fonts.
+ */
+function rewrite_fonts_url() {
+	$fonts_url = '';
+
+	/**
+	 * Translators: If there are characters in your language that are not
+	 * supported by Libre Franklin, translate this to 'off'. Do not translate
+	 * into your own language.
+	 */
+	$libre_franklin = _x( 'on', 'Libre Franklin font: on or off', 'rewrite' );
+
+	if ( 'off' !== $libre_franklin ) {
+		$font_families = array();
+
+		$font_families[] = 'Libre Franklin:300,300i,400,400i,600,600i,800,800i';
+
+		$query_args = array(
+			'family' => urlencode( implode( '|', $font_families ) ),
+			'subset' => urlencode( 'latin,latin-ext' ),
+		);
+
+		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	}
+
+	return esc_url_raw( $fonts_url );
+}
+
+/**
  * Enqueue scripts and styles.
  */
 function rewrite_scripts() {
-	wp_enqueue_style( 'rewrite-style', get_stylesheet_uri() );
-
+	wp_enqueue_style( 'rewrite-normalize', get_stylesheet_uri() );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/vender/font-awesome/css/font-awesome.min.css' );
+	wp_enqueue_style( 'rewrite-style', get_template_directory_uri() . '/assets/css/style.css' );
+	
 	wp_enqueue_script( 'rewrite-main', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '20120206', true );
 	wp_localize_script( 'rewrite-main', 'menuToggleText', array(
 		'open'   => esc_html__( 'Open Sub-menu', 'rewrite' ),
@@ -150,7 +183,7 @@ function rewrite_scripts() {
 
 	wp_enqueue_script( 'rewrite-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'rewrite-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'rewrite-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array( 'jquery' ), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
